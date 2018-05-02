@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/css/all.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -73,3 +74,4 @@
     </div>
 </body>
 </html>
+<script src="{{ asset('public/js/all.js') }}" ></script>
