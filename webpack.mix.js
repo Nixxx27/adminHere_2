@@ -27,7 +27,6 @@ let mix = require('laravel-mix');
 
     'resources/assets/css/vendors/theme_styles.css',
 
-
     'resources/assets/css/mystyles.css',
 
 

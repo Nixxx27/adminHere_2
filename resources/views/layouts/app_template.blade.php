@@ -89,3 +89,6 @@
 </body>
 
 </html>
+
+@yield('js')
+@yield('modal')

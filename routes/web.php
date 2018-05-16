@@ -16,13 +16,24 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
 
 
 Route::group(['middleware' => ['auth']],
     function () {
+
+Route::resource('employees', 'EmployeeController'); 
     	
+Route::resource('patients', 'PatientController'); 
+
+
+Route::GET('sl/home_employee_search','SickLeaveController@home_employee_search');
+Route::GET('sl/home_employee_search_by_name','SickLeaveController@home_employee_search_by_name');
+
+Route::resource('sl', 'SickLeaveController'); 
+		    
 Route::get('/home', 'HomeController@index')->name('home');
 
 });#END OF MIDDLEWARE AUTH
