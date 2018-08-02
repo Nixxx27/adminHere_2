@@ -24,16 +24,53 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::group(['middleware' => ['auth']],
     function () {
 
-Route::resource('employees', 'EmployeeController'); 
-    	
-Route::resource('patients', 'PatientController'); 
+    /*
+	|--------------------------------------------------------------------------
+	| Home Controller
+	|--------------------------------------------------------------------------
+	*/
 
+		Route::resource('home', 'HomeController');
 
-Route::GET('sl/home_employee_search','SickLeaveController@home_employee_search');
-Route::GET('sl/home_employee_search_by_name','SickLeaveController@home_employee_search_by_name');
+    /*
+	|--------------------------------------------------------------------------
+	| Location Controller
+	|--------------------------------------------------------------------------
+	*/
+	Route::resource('locations', 'LocationController'); 
 
-Route::resource('sl', 'SickLeaveController'); 
+	/*
+	|--------------------------------------------------------------------------
+	| Tracking Series Controller
+	|--------------------------------------------------------------------------
+	*/
+	Route::resource('trackingseries', 'TrackingSeriesController'); 
+	/*
+	|--------------------------------------------------------------------------
+	| Trolleys Controller
+	|--------------------------------------------------------------------------
+	*/
+	Route::GET('/trolleys/trackingseries','TrolleysController@returnTrackingSeries');//Ajax Call
+	Route::resource('trolleys', 'TrolleysController'); 
+	/*
+	|--------------------------------------------------------------------------
+	| Barcode Controller Extends Trolleys Controller
+	|--------------------------------------------------------------------------
+	*/
+	Route::GET('/barcode/trolleydetails','TrolleysController@returnTrolleyDetails'); //Ajax Call
+	Route::GET('barcode', 'TrolleysController@barcode'); 
+	Route::POST('updateuserlocation', 'TrolleysController@updateUserLocation');
+	Route::POST('addtrolleyhistory', 'TrolleysController@addTrolleyHistory');
+	/*
+	|--------------------------------------------------------------------------
+	| History Extends Trolleys Controller
+	|--------------------------------------------------------------------------
+	*/
+	
+	Route::POST('/trolleys/history/returntrolley/{history_id}','TrolleysController@returnedTrolley');
+	Route::GET('/trolleys/history/{trolley_id}','TrolleysController@viewHistoryPerTrolley');
+
 		    
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 });#END OF MIDDLEWARE AUTH

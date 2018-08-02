@@ -10,7 +10,8 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>Sky - Clinic Management System</title>
+    <title>PAL - Trolley Tracking System</title>
+    @yield('css')
     <link href="{{ asset('public/css/all.css') }}" rel="stylesheet">
 </head>
 
@@ -21,7 +22,7 @@
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">Sky CMS</p>
+            <p class="loader__label">PAL -TTS</p>
         </div>
     </div>
     <!-- ============================================================== -->
@@ -45,7 +46,7 @@
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <div class="page-wrapper">
+        <div class="page-wrapper" style="margin-top:15px">
             
             <!-- ============================================================== -->
             <!-- Container fluid  -->

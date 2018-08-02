@@ -1,3 +1,8 @@
+<?php  
+use App\MyApp\NewClass;
+$myclass = new NewClass();
+
+?>
 @extends('layouts.app_template')
 
 @section('content')
@@ -17,31 +22,18 @@
             </ol>
         </div>
     
-    <div>
+   {{--  <div>
         <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
-    </div>
+    </div> --}}
 </div>
  <!-- ============================================================== -->
     <!-- End Bread crumb and right sidebar toggle -->
 <!-- ============================================================== -->
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
+<hr>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-11">
+        <h2>HELLO</h2>
     </div>
 </div>
 @endsection

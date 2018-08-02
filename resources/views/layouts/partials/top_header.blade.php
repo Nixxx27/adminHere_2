@@ -4,33 +4,28 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
-                        <!-- Logo icon -->
-                        {{-- <b> --}}
+        
+
+                           <a class="navbar-brand" href="index.html">
+                   
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            {{-- <img src="{{url('public/images/logo-icon.png')}}" style="width:40px;height:auto" alt="homepage" class="dark-logo" /> --}}
+                            <img src="{{url('public/images/tts.png')}}" alt="homepage" class="dark-logo" />
                             <!-- Light Logo icon -->
-                            {{-- <img src="{{url('public/images/logo-light-icon.png')}}" alt="homepage" class="light-logo" /> --}}
-                        {{-- </b> --}}
-                        <!--End Logo icon -->
-                        <!-- Logo text --><span>
-                         <!-- dark Logo text -->
-                         <img src="{{url('public/images/logo-text.png')}}" alt="homepage" class="dark-logo" />
-                         <!-- Light Logo text -->    
-                         <img src="{{url('public/images/logo-light-text.png')}}" class="light-logo" alt="homepage" /></span> </a>
+                            <img src="{{url('public/images/logo-light-icon.png')}}" alt="homepage" class="light-logo" />
+                       </a>
                  </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
                 <!-- ============================================================== -->
-                <div class="navbar-collapse">
+                <div class="navbar-collapse" style="background:#00318d;">
                     <!-- ============================================================== -->
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->
                     <ul class="navbar-nav mr-auto">
                         <!-- This is  -->
-                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
-                        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        <li class="nav-item" > <a style="color:white !important" class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        <li class="nav-item" > <a style="color:white !important" class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
                         <li class="nav-item hidden-sm-down"></li>
                     </ul>
                     <!-- ============================================================== -->
@@ -40,52 +35,55 @@
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
-                        <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
+                     {{--    <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
                             <form class="app-search">
                                 <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
-                        </li>
+                        </li> --}}
                         <!-- ============================================================== -->
                         <!-- Comment -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-message"></i>
+                            <a  style="color:white" class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-message"></i>
                                 <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown">
                                 <ul>
                                     <li>
-                                        <div class="drop-title">Notifications</div>
+                                        <div class="drop-title">For Return Trolleys</div>
                                     </li>
                                     <li>
                                         <div class="message-center">
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="btn btn-danger btn-circle"><i class="fa fa-link"></i></div>
+                                                <div class="btn btn-danger btn-circle"><i class="fas fa-shopping-cart"></i></div>
                                                 <div class="mail-contnet">
-                                                    <h5>Luanch Admin</h5> <span class="mail-desc">Just see the my new admin!</span> <span class="time">9:30 AM</span> </div>
+                                                    <h5>Trolley #. 1200005</h5> <span class="mail-desc"> Current Loc : MNL</span> <span class="time">Aug 02 2018 10:11 AM Thu</span> </div>
                                             </a>
+                                           
+                                           <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-danger btn-circle"><i class="fas fa-shopping-cart"></i></div>
+                                                <div class="mail-contnet">
+                                                    <h5>Trolley #. 1200005</h5> <span class="mail-desc"> Current Loc : MNL</span> <span class="time">Aug 02 2018 10:11 AM Thu</span> </div>
+                                            </a>
+
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="btn btn-success btn-circle"><i class="ti-calendar"></i></div>
+                                                <div class="btn btn-danger btn-circle"><i class="fas fa-shopping-cart"></i></div>
                                                 <div class="mail-contnet">
-                                                    <h5>Event today</h5> <span class="mail-desc">Just a reminder that you have event</span> <span class="time">9:10 AM</span> </div>
+                                                    <h5>Trolley #. 1200005</h5> <span class="mail-desc"> Current Loc : MNL</span> <span class="time">Aug 02 2018 10:11 AM Thu</span> </div>
                                             </a>
+
                                             <!-- Message -->
                                             <a href="#">
-                                                <div class="btn btn-info btn-circle"><i class="ti-settings"></i></div>
+                                                <div class="btn btn-danger btn-circle"><i class="fas fa-shopping-cart"></i></div>
                                                 <div class="mail-contnet">
-                                                    <h5>Settings</h5> <span class="mail-desc">You can customize this template as you want</span> <span class="time">9:08 AM</span> </div>
-                                            </a>
-                                            <!-- Message -->
-                                            <a href="#">
-                                                <div class="btn btn-primary btn-circle"><i class="ti-user"></i></div>
-                                                <div class="mail-contnet">
-                                                    <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
+                                                    <h5>Trolley #. 1200005</h5> <span class="mail-desc"> Current Loc : MNL</span> <span class="time">Aug 02 2018 10:11 AM Thu</span> </div>
                                             </a>
                                         </div>
                                     </li>
                                     <li>
-                                        <a class="nav-link text-center" href="javascript:void(0);"> <strong>Check all notifications</strong> <i class="fa fa-angle-right"></i> </a>
+                                        <a class="nav-link text-center" href="javascript:void(0);"> <strong>see all for return trolleys</strong> <i class="fa fa-angle-right"></i> </a>
                                     </li>
                                 </ul>
                             </div>
@@ -96,7 +94,7 @@
                         <!-- ============================================================== -->
                         <!-- Messages -->
                         <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
+                 {{--        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-email"></i>
                                 <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                             </a>
@@ -138,14 +136,14 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> --}}
                         <!-- ============================================================== -->
                         <!-- End Messages -->
                         <!-- ============================================================== -->
                         <!-- ============================================================== -->
                         <!-- mega menu -->
                         <!-- ============================================================== -->
-                        <li class="nav-item dropdown mega-dropdown"> <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-view-grid"></i></a>
+                      {{--   <li class="nav-item dropdown mega-dropdown"> <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-view-grid"></i></a>
                             <div class="dropdown-menu animated bounceInDown">
                                 <ul class="mega-dropdown-menu row">
                                     <li class="col-lg-3 col-xlg-2 m-b-30">
@@ -234,7 +232,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> --}}
                         <!-- ============================================================== -->
                         <!-- End mega menu -->
                         <!-- ============================================================== -->
@@ -261,12 +259,12 @@
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                                   {{--  <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
                                     <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
                                     <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
-                                    <li role="separator" class="divider"></li>
+                                    <li role="separator" class="divider"></li> --}}
                                     <li><a href="{{url('logout')}}" onclick="return confirm('Are you sure you want to Logout?')"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>

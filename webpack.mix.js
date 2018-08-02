@@ -43,7 +43,7 @@ let mix = require('laravel-mix');
   	'resources/assets/js/vendors/jquery.sparkline.min.js',
   	'resources/assets/js/vendors/custom.min.js',
   	'resources/assets/js/vendors/jQuery.style.switcher.js',
-
+    'resources/assets/js/vendors/typed.min.js',
     'resources/assets/js/myscripts.js',
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\notes;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,36 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $notes = notes::orderBy('id','DESC')->get();
+        return view('home',compact('notes'));
+    }
+
+
+    public function store(Request $request)
+    {
+        $this->validate($request,
+            [
+                'notes'       => 'required|min:1',
+            ],
+                $messages = array('notes.required' => 'Please type a Note!')
+            );
+
+                    
+        $request['entered_by'] = \Auth::user()->id;
+            $notes = notes::create($request->all());
+
+             return back()->with([
+            'flash_message' => "New Note Successfully Created!"
+        ]);
+    }
+
+     public function destroy($id)
+    {
+        $notes = notes::findorfail($id);
+        $notes ->delete();
+
+        return back()->with([
+            'flash_message' => "Note Deleted Successfully!"
+        ]);
     }
 }

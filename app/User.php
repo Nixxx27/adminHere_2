@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role'
+        'name', 'email', 'password','role','location_id'
     ];
 
     /**
@@ -38,6 +38,11 @@ class User extends Authenticatable
         }
 
         return false;
+    }
+
+    public function theLocation() 
+    {
+        return $this->belongsTo('App\locations','location_id');
     }
 
 
