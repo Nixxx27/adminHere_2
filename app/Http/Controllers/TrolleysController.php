@@ -11,6 +11,7 @@ use App\locations;
 use App\trolley_history;
 use App\User;
 use Carbon\Carbon;
+use App\Http\Resources\TrolleyResource as TrolleyResource;
 
 class TrolleysController extends Controller
 {
@@ -203,6 +204,26 @@ class TrolleysController extends Controller
             ]);
     }
 
+    /**
+     * api Call
+     *
+     */
+
+    public function trolleyDetails($trolleyNum)
+    {
+        return         $user = Auth::user();
+        $trolley = trolley_ml::where("tracking_number",$trolleyNum)->get();
+
+        if($trolley)
+        {
+             return new TrolleyResource($trolley);
+            // return TrolleyResource::collection($trolley);
+        }else
+        {
+            return NULL;
+        }
+        
+    }
      /**
      * AJAX Call
      *
@@ -210,7 +231,7 @@ class TrolleysController extends Controller
     public function returnTrolleyDetails(Request $request)
     {
 
-        $trackingNumber =  $request['trackingNumber'];
+        $trackingNumber = $request['trackingNumber'];
 
         $trolley = trolley_ml::where("tracking_number", $trackingNumber)
         ->first();

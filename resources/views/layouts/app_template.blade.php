@@ -2,15 +2,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
+    <title>SKY - Trolley Tracking System</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>PAL - Trolley Tracking System</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script>window.Laravel = { csrfToken: '{{ csrf_token() }}'}</script>
+    <script src="{{asset('public/js/app.js')}}"></script>
+
     @yield('css')
     <link href="{{ asset('public/css/all.css') }}" rel="stylesheet">
 </head>
@@ -22,7 +22,7 @@
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">PAL -TTS</p>
+            <p class="loader__label">SKY -TTS</p>
         </div>
     </div>
     <!-- ============================================================== -->
@@ -86,6 +86,7 @@
     </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
+
     <script src="{{ asset('public/js/all.js') }}" ></script>
 </body>
 

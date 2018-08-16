@@ -6,7 +6,7 @@
                 <div class="navbar-header">
         
 
-                           <a class="navbar-brand" href="index.html">
+                           <a class="navbar-brand" href="{{url('home')}}">
                    
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
@@ -254,8 +254,10 @@
                                         <div class="dw-user-box">
                                             <div class="u-img"><img src="{{url('public/images/users/1.jpg')}}" alt="user"></div>
                                             <div class="u-text">
-                                                <h4>Steave Jobs</h4>
-                                                <p class="text-muted">varun@gmail.com</p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                                <h4><strong>{{strtoupper(\Auth::user()->name)}}</strong></h4>
+                                                {{-- <p class="text-muted">varun@gmail.com</p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a> --}}
+
+                                            </div>
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>

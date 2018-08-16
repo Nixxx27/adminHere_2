@@ -27,7 +27,9 @@
   <div class="card-header"  style="background:#4D4D4D;color:white;font-weight: bold">
     BARCODE : TROLLEY TRACKING NUMBER | @if($user->theLocation)<SPAN onclick="update_user_status()"  title="Your Location is in {{$user->theLocation->location}} Click to Change" style="color:#ffa739;margin-left:10px;cursor:pointer"><i class="fas fa-map-marker-alt"></i> <span style="text-decoration: underline;font-size:18px">{{$user->theLocation->location}}</span></SPAN>@else <SPAN onclick="update_user_status()" style="color:#ffa739;margin-left:10px;cursor:pointer"><i class="fas fa-map-marker-alt"></i> PLEASE SELECT YOUR LOCATION </span> @endif
 {{--     <i class="fas fa-exchange-alt fa-2x" onclick="update_user_status()" title="Change Your Location" style="margin-left:20px;color:#ffa739;cursor:pointer"></i> --}}
-
+    <div id="app">
+       @{{name}}
+    </div>
 
         <div id="update_user_status" style="display:none">
              {{ Form::open(array('url' => '/updateuserlocation/','method' => 'POST','name' => 'updateuserlocation','id' => 'updateuserlocation')) }}
@@ -114,6 +116,8 @@
   function trackingNumberDetails()
   {
     var trackingNumber =$("#tracking_number").val();
+    trackingNumber=  trackingNumber.replace(/ /g,'');
+    console.log(trackingNumber +  " " + trackingNumber.length)
     var trackingNumberLength = trackingNumber.length;
       if(trackingNumberLength >= 7)
       {
@@ -180,4 +184,7 @@
     $("#update_user_status").slideToggle();
    }
 </script>
+
+
+
 @endsection

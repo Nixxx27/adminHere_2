@@ -140,7 +140,7 @@
                       
                        {!! Form::open(array('name'=>'add_notes','id'=>'add_notes','files'=>true,'action'=>'HomeController@store')) !!}
                     
-                    <textarea class="form-control" rows="10" style="color:black" name="notes" placeholder="Hi!, {{ucwords(\Auth::user()->name)}} Type in your notes...">{{old('notes')}}</textarea>
+                    <textarea class="form-control" rows="10" style="color:black" name="notes" placeholder="Hi, {{ucwords(\Auth::user()->name)}}! Type in your notes...">{{old('notes')}}</textarea>
                     
                     <button onclick="return confirm('Are you sure you want to save this Notes?')" class="btn pull-right btn-info"><i class="fa fa-floppy-o"></i> Save</button>
                    
