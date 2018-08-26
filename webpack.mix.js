@@ -44,6 +44,8 @@ let mix = require('laravel-mix');
   	'resources/assets/js/vendors/custom.min.js',
   	'resources/assets/js/vendors/jQuery.style.switcher.js',
     'resources/assets/js/vendors/typed.min.js',
+    'resources/assets/js/vendors/vue.js',
+    'resources/assets/js/vendors/axios.min.js',
     'resources/assets/js/myscripts.js',
 
 

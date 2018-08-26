@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>window.Laravel = { csrfToken: '{{ csrf_token() }}'}</script>
-    <script src="{{asset('public/js/app.js')}}"></script>
+
 
     @yield('css')
     <link href="{{ asset('public/css/all.css') }}" rel="stylesheet">
@@ -86,8 +86,9 @@
     </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
-
+        {{-- <script src="{{asset('public/js/app.js')}}"></script> --}}
     <script src="{{ asset('public/js/all.js') }}" ></script>
+
 </body>
 
 </html>

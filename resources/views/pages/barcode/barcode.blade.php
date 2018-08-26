@@ -3,12 +3,65 @@
 @section('css')
 
 <style type="text/css">
+::placeholder {
+    color: white !important;
+    opacity: 1  !important;; /* Firefox */
+}
+
+
    .spanStyle
    {
     font-family: 'century gothic';
     font-size:18px;
     font-weight:bold;
    }
+
+   .fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+
+
+  .inputDefaultStyle
+  {
+    height:80px !important;
+    font-size:40px !important;
+    font-weight: bold !important;
+    color:#ffa433!important;
+    background:black!important;
+  }
+
+  .inputDefaultStyle::placeholder
+  {
+        color: #ffa433!important;
+    opacity: 1  !important;; /* Firefox */
+  }
+
+  .inputRightLocationStyle
+  {
+    height:80px !important;
+    font-size:40px !important;
+    font-weight: bold !important;
+    color:white!important;
+    background:#008000!important;
+  }
+
+
+    .inputWrongLocationStyle
+  {
+    height:80px !important;
+    font-size:40px !important;
+    font-weight: bold !important;
+    color:white!important;
+    background:#ec0505!important;
+  }
+
+  ul {
+ list-style-type: square;
+}
+
 </style>
 @endsection
 
@@ -20,18 +73,15 @@
             @include('errors.success')
         </div>
 </div>
-
+<div id="app">
 <div class="row">
  <div class="col-md-6" >
   <div class="card" style="border:4px double #4d4d4d">
   <div class="card-header"  style="background:#4D4D4D;color:white;font-weight: bold">
     BARCODE : TROLLEY TRACKING NUMBER | @if($user->theLocation)<SPAN onclick="update_user_status()"  title="Your Location is in {{$user->theLocation->location}} Click to Change" style="color:#ffa739;margin-left:10px;cursor:pointer"><i class="fas fa-map-marker-alt"></i> <span style="text-decoration: underline;font-size:18px">{{$user->theLocation->location}}</span></SPAN>@else <SPAN onclick="update_user_status()" style="color:#ffa739;margin-left:10px;cursor:pointer"><i class="fas fa-map-marker-alt"></i> PLEASE SELECT YOUR LOCATION </span> @endif
 {{--     <i class="fas fa-exchange-alt fa-2x" onclick="update_user_status()" title="Change Your Location" style="margin-left:20px;color:#ffa739;cursor:pointer"></i> --}}
-    <div id="app">
-       @{{name}}
-    </div>
 
-        <div id="update_user_status" style="display:none">
+  <div id="update_user_status" style="display:none">
              {{ Form::open(array('url' => '/updateuserlocation/','method' => 'POST','name' => 'updateuserlocation','id' => 'updateuserlocation')) }}
         <table>
             <tr>
@@ -56,135 +106,235 @@
 
   </div><!--header-->
   <div class="card-body">
-    <input type="text" class="form-control" id="tracking_number" onkeyup="trackingNumberDetails()"  autofocus="" autocomplete="off" style="height:80px !important;font-size:40px;font-weight: bold;color:#ffa433!important;background:black!important" placeholder="Tracking #..." name="tracking_number">
-    {{-- <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a> --}}
 
-     <div id="error_details" style="margin-top:10px;display:none">
-        <span style="color:red;font-weight:bold;">Tracking Number Cannot be Found!</span>
-     </div>
 
-    <div id="tracking_details" style="margin-top:10px;display:none">
+      <input type="text" class="form-control" v-model="trackingNumber" v-on:Keyup="trolleyDetails()"  autocomplete="off" v-bind:class="{ inputDefaultStyle: isDefaultLocation, 'inputRightLocationStyle': isRightLocation, 'inputWrongLocationStyle': isWrongLocation }" placeholder="Tracking #...">
 
-         <table class="table">
+  <transition name="fade">
+    <div v-if="show">
+       <table class="table">
              <tr>
                 <td style="width:150px">Trolley No</td>
-                <td align="left"><span id="trolleyNum" class="spanStyle"></span> 
+                <td align="left"><span v-html="rTrackingNumber" class="spanStyle"></span> 
                 </td>
              </tr>
              <tr>
                 <td style="width:150px">Location</td>
-                <td align="left"><span id="trolleyLocation" class="spanStyle"></span> 
+                <td align="left"><span v-html="rLocation" class="spanStyle"></span> 
                 </td>
              </tr>
 
              <tr>
                 <td style="width:150px">Status</td>
-                <td><span id="locationStatus" class="spanStyle"></span></td>
+                <td><span v-html="rStatus" class="spanStyle"></span></td>
              </tr>
-{{ Form::open(array('url' => '/addtrolleyhistory/','method' => 'POST','name' => 'addTrolleyToHistory','id' => 'addTrolleyToHistory')) }}
-            <tr>
-                <td style="width:150px">Add Remarks</td>
-                <td><textarea class="form-control" style="border:1px solid black" name="remarks" id="remarks"></textarea>
-                </td>
-             </tr>
-             <tr>
-                 <td colspan="2" align="center">
-                       
-                    <input type="hidden" placeholder="trolley_ml_id" name="trolley_ml_id" id="submit_trolley_ml_id">
-                    <input type="hidden" placeholder="user_current_location_id" name="user_current_location_id" id="submit_user_current_location_id">
-                    <input type="hidden" placeholder="status" name="status" id="submit_status">
+        </table>
+    </div><!--vifShow-->
+    <div v-if="notFound" style="margin-top:10px;">
+        <span style="color:red;font-weight:bold;">Tracking Number Cannot be Found!</span>
+     </div><!--vifnotFound-->
 
-                    <button class="btn btn-info btn-lg text-center" onclick="return confirm('Confirm Trolley Details?')">SUBMIT</button>
+  </transition>
 
-                      
-                 </td>
-             </tr>
-    {!! Form::close() !!}
-         </table>
-    </div><!--tracking_details-->
+
   </div><!--card body-->
 </div>
       
-    </div><!--div 6-->
-</div>
+</div><!--div 6-->
+
+  <transition name="fade">    
+
+    <div class="col-md-4"  v-if="hasItem">
+      <h3 style="margin-bottom:1px"><strong> <i class="fas fa-barcode" style="color:#002065"></i> YOUR BARCODED TROLLEY LISTS / @{{count}} </strong><br><span style="font-size:12px;font-style:italic">(Temporary Lists)</span></h3>
+      <hr>
+        <div style="height:800px; overflow:auto;">
+          <ul><li v-for="item in items"> @{{ item.message }}</li></ul>
+        </div>
+          
+    </div><!--div 3-->
+</transition>
+
+
+</div>    <!--row-->
+
+</div><!--divApp-->
 @endsection
 
 @section('js')
+
+
 <script type="text/javascript">
-  function trackingNumberDetails()
+  var app = new Vue({
+  el: '#app',
+
+  data:{
+    name: "nikko zabala",
+    trackingNumber: '',
+    trackingNumberLength: 0,
+    
+    trackingId: '',
+    rTrackingNumber: '',
+    rLocation: '',
+    rStatus: '',
+    show: false,
+    notFound: false,
+    userCurrentLocation : @if(\Auth::user()->location_id ){{\Auth::user()->location_id }} @endif,
+    
+    isRightLocation: false,
+    isWrongLocation: false,
+    isDefaultLocation:  true,
+
+
+    items: [],
+    hasItem:false,
+    count:0,
+    
+    },//data
+
+  // created()
+  //  {
+  //    this.listen();
+  //  },
+  mounted()
   {
-    var trackingNumber =$("#tracking_number").val();
-    trackingNumber=  trackingNumber.replace(/ /g,'');
-    console.log(trackingNumber +  " " + trackingNumber.length)
-    var trackingNumberLength = trackingNumber.length;
-      if(trackingNumberLength >= 7)
+    // this.trolleyDetails();
+  },
+
+  methods:{
+
+    trolleyDetails: function()
+    {
+
+      var vm = this;
+
+      this.trackingNumber=  this.trackingNumber.replace(/ /g,'');
+      // console.log(this.trackingNumber);
+      this.trackingNumberLength = this.trackingNumber.length
+      if(this.trackingNumberLength >= 7)
       {
 
-          $.ajax({
-          type:'GET',
-          url:"./barcode/trolleydetails",
-          dataType: 'json',
-          data: {trackingNumber:trackingNumber},
-          success:function(data){
-            if(data.trolleyCount==1)
-            {
-                // var trolleyNum = trackingNumber;
-                var trolleyArea = data.trolleyArea;
-                var trolleyLocation = data.trolleyLocation;
-                var userLocation = data.userLocation;
-                
-                $("#trolleyNum").text(trackingNumber);
-                $("#trolleyLocation").text(trolleyLocation);
-                // console.log(trolleyArea + " = " + userLocation);
+        // console.log(" 7 AND GREATER THAN");
+ 
+       this.trolleyNum = this.trackingNumber;
+        axios.get('./api/barcode/trolleydetails/' + vm.trackingNumber)
+            .then(function (response) {
+              // handle success
+              // console.log(response.data);
+              // console.log(response.data.data.location);
+              var dbStatus;
+              vm.trackingId = response.data.data.id;
+              vm.rTrackingNumber =response.data.data.trackingNumber,
+              vm.rLocation = response.data.data.trolleyLocation;
+              vm.show = true;
+              vm.notFound = false;
 
-                $("#submit_trolley_ml_id").val(data.trolleyId);
-                $("#submit_user_current_location_id").val(data.userLocationId);
 
-                if(trolleyArea == userLocation)
-                {
-                    $("#locationStatus").html('RIGHT LOCATION <i class="fas fa-check-circle fa-2x" style="color:green"></i>')
-                    $("#submit_status").val("forretain");
-                }else
-                {
-                   $("#locationStatus").html('FOR RETURN TO ' + trolleyArea + ' <i class="fas fa-times-circle fa-2x" style="color:red"></i>')
-                    $("#submit_status").val("forreturn");
-                
-                }
+             // console.log(vm.userCurrentLocation);
+              // console.log(response.data.data.trolleyAreaId);
+              if(vm.userCurrentLocation == response.data.data.trolleyAreaId)
+              {
+                vm.rStatus = 'PROPER LOCATION <i class="fas fa-check-circle fa-2x" style="color:green"></i>';
+                vm.itemStatus = "PROPER LOCATION";
+                dbStatus = 'forretain';
 
-                $("#error_details").slideUp();
-                $("#tracking_details").slideDown();
-            }else if(data.trolleyCount==0)
-            {
-                $("#tracking_details").slideUp();
-                $("#error_details").slideDown();
-            }
-           
+                vm.isWrongLocation= false;
+                vm.isDefaultLocation =  false;
+                vm.isRightLocation=true;
 
-           // console.log(data.trolleyCount);
-          },
-          error : function() {
-                console.log('error');
-                }       
-          });
 
-      }else{
-            $("#trolleyLocation").text("");
-            $("#tracking_details").slideUp();
-            $("#error_details").slideUp();
-            // $("#tracking_series_id").val("");
+              }else
+              {
+                vm.rStatus = 'FOR RETURN TO ' + response.data.data.trolleyArea + ' <i class="fas fa-times-circle fa-2x" style="color:red"></i>'
+                vm.itemStatus = "FOR RETURN TO " + response.data.data.trolleyArea ;
+                dbStatus = 'forreturn';
+
+                  vm.isRightLocation=false;
+                  vm.isDefaultLocation =  false;
+                  vm.isWrongLocation= true;
+              }
+
+            axios.post('./api/barcode/addtohistory', {
+              trolley_ml_id: response.data.data.id,
+              user_current_location_id: vm.userCurrentLocation,
+              status: dbStatus
+            })
+            .then(function (response) {
+                // console.log("ADDED");
+          
+            })
+            .catch(function (error) {
+              // handle error
+              console.log(error);
+            })
+            .then(function () {
+              // always executed
+            });
+
+              vm.count++;
+              vm.hasItem = true;
+              vm.items.unshift({
+                 message : vm.trackingNumber + " " +  vm.itemStatus 
+              })
+
+              vm.trackingNumber = "";
+  
+              
+            })
+            .catch(function (error) {
+              // handle error
+   
+              vm.trackingId = "";
+              vm.rLocation = "";
+              vm.show = false;
+              vm.notFound = true;
+
+              vm.isRightLocation=false;
+              vm.isWrongLocation= false;
+              vm.isDefaultLocation =  true;
+
+              // console.log(error);
+
+            })
+            .then(function () {
+              // always executed
+             });
+
+       }else
+      {
+        this.show = false;
+        this.notFound = false;
+        this.isRightLocation=false;
+        this.isWrongLocation= false;
+        this.isDefaultLocation =  true;
       }
+            
+    
+    },
+    barcodedTrolley: function($id)
+    {
+      var vm = this;
+          axios.post('../api/barcode/trolley/' + $id,
+             {
+              firstName: 'Fred',
+              lastName: 'Flintstone'
+            })
+            .then(function (response) {
+                vm.fetchInternational();
+          
+            })
+            .catch(function (error) {
+              // handle error
+              console.log(error);
+            })
+            .then(function () {
+              // always executed
+            });
+    },
 
-   }
+}
 
-
-   function update_user_status()
-   {
-    $("#update_user_status").slideToggle();
-   }
+});
 </script>
-
 
 
 @endsection

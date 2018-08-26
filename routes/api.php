@@ -21,6 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     function () {
 	
 	Route::GET('barcode/trolleydetails/{trolleynum}','TrolleysController@trolleyDetails');
+	Route::POST('barcode/addtohistory','TrolleysController@addToHistory');
 	Route::POST('barcode/trolley/{id}','AcknowledgementController@internationalServedChanges');
 
 // });#END OF MIDDLEWARE AUTH

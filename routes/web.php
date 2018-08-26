@@ -60,7 +60,7 @@ Route::group(['middleware' => ['auth']],
 	Route::GET('/barcode/trolleydetails','TrolleysController@returnTrolleyDetails'); //Ajax Call
 	Route::GET('barcode', 'TrolleysController@barcode'); 
 	Route::POST('updateuserlocation', 'TrolleysController@updateUserLocation');
-	Route::POST('addtrolleyhistory', 'TrolleysController@addTrolleyHistory');
+	Route::GET('addtrolleyhistory', 'TrolleysController@addTrolleyHistory');
 	/*
 	|--------------------------------------------------------------------------
 	| History Extends Trolleys Controller

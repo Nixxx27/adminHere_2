@@ -205,15 +205,14 @@ class TrolleysController extends Controller
     }
 
     /**
-     * api Call
+     * API Call
      *
      */
 
     public function trolleyDetails($trolleyNum)
     {
-        return         $user = Auth::user();
-        $trolley = trolley_ml::where("tracking_number",$trolleyNum)->get();
-
+        $trolley = trolley_ml::where("tracking_number",$trolleyNum)->first();
+            
         if($trolley)
         {
              return new TrolleyResource($trolley);
@@ -223,6 +222,24 @@ class TrolleysController extends Controller
             return NULL;
         }
         
+    }
+
+    public function addToHistory(Request $request)
+    {
+
+            $this->validate($request,
+            [
+                'trolley_ml_id'       => 'required',
+                'user_current_location_id'       => 'required',
+                'status'       => 'required',
+            ],
+                $messages = array('trolley_ml_id.required' => 'Trolley Tracking Number is Required!',
+                    'user_current_location_id.required' => 'Location is Required',
+                    'status.required' => 'Status is Required',
+                 )
+            );
+
+            $history = trolley_history::create($request->all());
     }
      /**
      * AJAX Call
@@ -298,7 +315,8 @@ class TrolleysController extends Controller
 
     public function addTrolleyHistory(Request $request)
     {
-         $this->validate($request,
+
+           $this->validate($request,
             [
                 'trolley_ml_id'       => 'required',
                 'user_current_location_id'       => 'required',
@@ -310,12 +328,15 @@ class TrolleysController extends Controller
                  )
             );
 
+        $if_exist = trolley_history::where("trolley_ml_id", $request['trolley_ml_id'])
+        ->where("user_current_location_id", $request['user_current_location_id'])
+        ->
 
         $history = trolley_history::create($request->all());
 
-         return back()->with([
-            'flash_message' => "Saved Succesfully!"
-            ]);
+         // return back()->with([
+         //    'flash_message' => "Saved Succesfully!"
+         //    ]);
     }
 
     public function viewHistoryPerTrolley($trolley_id)
