@@ -334,6 +334,12 @@
 }
 
 });
+
+
+ function update_user_status()
+   {
+    $("#update_user_status").slideToggle();
+   }
 </script>
 
 

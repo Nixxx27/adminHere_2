@@ -5,10 +5,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
-
+        <title>Sky - Trolley Tracking System</title>
+        <link href="{{ asset('public/css/all.css') }}" rel="stylesheet">
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        {{-- <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css"> --}}
 
         <!-- Styles -->
         <style>
@@ -45,23 +45,6 @@
                 text-align: center;
             }
 
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
         </style>
     </head>
     <body>
@@ -69,27 +52,26 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        {{-- <a href="{{ url('/home') }}">Home</a> --}}
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        {{-- <a href="{{ route('login') }}">Login</a> --}}
                     @endauth
                 </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                     <img src="{{url('public/images/tts.png')}}" alt="homepage" class="dark-logo" /><br>
+                     <hr>
+                     <a href="{{url('home')}}"><button class="btn btn-info btn-lg" title="Click to goto Home"><i class="fa fa-home" aria-hidden="true"></i> HOME</button></a>
+          {{--           Trolley Tracking System --}}
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+               
             </div>
         </div>
+        <footer class="footer">
+    <small style="font-size:12px"><b>© 2018</b> <a href="https://www.skylogistics.com.ph" target="_blank"><img src="{{url('public/images/skykitchen.png')}}" style="width:100px;height:auto"> <img src="{{url('public/images/skylogisitics.png')}}" style="width:100px;height:auto"> </a> | Trolley Tracking System | <a href="http://www.nikkozabala.com" target="_blank" style="font-size:90%;"> created by: Nikko Zabala</a></small>
+</footer>`
     </body>
 </html>

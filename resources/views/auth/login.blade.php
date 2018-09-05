@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header" style="background:#00318D;color:white"><i class="fas fa-sign-in-alt"></i><b>  LOGIN </b></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -39,7 +39,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                    {{--     <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="checkbox">
                                     <label>
@@ -47,17 +47,17 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-info">
                                     {{ __('Login') }}
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                           {{--      <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
-                                </a>
+                                </a> --}}
                             </div>
                         </div>
                     </form>
@@ -65,5 +65,9 @@
             </div>
         </div>
     </div>
+    <footer class="footer">
+    <small style="font-size:12px"><b>© 2018</b> <a href="https://www.skylogistics.com.ph" target="_blank"><img src="{{url('public/images/skykitchen.png')}}" style="width:100px;height:auto"> <img src="{{url('public/images/skylogisitics.png')}}" style="width:100px;height:auto"> </a> | Trolley Tracking System | <a href="http://www.nikkozabala.com" target="_blank" style="font-size:90%;"> created by: Nikko Zabala</a></small>
+</footer>
 </div>
+
 @endsection

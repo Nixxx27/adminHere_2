@@ -43,11 +43,11 @@
             <h3 style="color:#00318D"><i class="fas fa-shopping-cart"></i> <strong><span class="welcome"> </span></strong></h3>
         </div>
 
-        <div class="col-md-7 align-self-center">
+       {{--  <div class="col-md-7 align-self-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
             </ol>
-        </div>
+        </div> --}}
     
    {{--  <div>
         <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
