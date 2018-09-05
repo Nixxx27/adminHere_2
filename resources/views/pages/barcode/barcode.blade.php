@@ -178,7 +178,7 @@
     rStatus: '',
     show: false,
     notFound: false,
-    userCurrentLocation : @if(\Auth::user()->location_id ){{\Auth::user()->location_id }} @endif,
+    userCurrentLocation : @if(\Auth::user()->location_id ){{\Auth::user()->location_id }}@else '' @endif,
     
     isRightLocation: false,
     isWrongLocation: false,
