@@ -267,6 +267,7 @@
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                                     <li role="separator" class="divider"></li> --}}
+                                    <li><a href="{{url('password')}}"><i class="fas fa-unlock-alt"></i> Change Password </a></li>
                                     <li><a href="{{url('logout')}}" onclick="return confirm('Are you sure you want to Logout?')"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>

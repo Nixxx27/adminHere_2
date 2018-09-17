@@ -35,7 +35,7 @@
 
 
    <div class="col-md-10">
-
+    <div class="table-responsive">
             <table class="table color-bordered-table warning-bordered-table">
                 <thead>
                     <tr>
@@ -83,6 +83,7 @@
 
                                         </tbody>
                                     </table>
+                                  </div>
                                 </div>
 
 </div>

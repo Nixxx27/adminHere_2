@@ -79,6 +79,7 @@ $myclass = new NewClass();
 </div>
 <div class="row">
    <div class="col-md-11">
+    <div class="table-responsive">
         <table class="table color-bordered-table warning-bordered-table">
                 <thead>
                     <tr>
@@ -170,6 +171,7 @@ $myclass = new NewClass();
 
                                         </tbody>
                                     </table>
+                                  </div>
                                 </div>
 
 

@@ -33,7 +33,7 @@
 
     <div class="col-md-12" style="margin-bottom: 10px" ><button class="btn btn-danger" title="Add Tracking number Series"  data-toggle="modal" data-target="#responsive-modal"><i class="fas fa-plus-square fa-2x"></i></button></div> 
    <div class="col-md-10">
-
+    <div class="table-responsive">
             <table class="table color-bordered-table warning-bordered-table">
                 <thead>
                     <tr>
@@ -84,6 +84,7 @@
 
                                         </tbody>
                                     </table>
+                                </div>
                                 </div>
 
 </div>

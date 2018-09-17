@@ -7,6 +7,7 @@
                     <ul id="sidebarnav">
                         <li class="user-profile"> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><img src="{{url('public/images/users/profile.png')}}" alt="user" /><span class="hide-menu"><b>{{ strtoupper(\Auth::user()->name)}}</b></span></a>
                             <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{url('password')}}"><i class="fas fa-unlock-alt"></i> Change Password </a></li>
                                 <li><a href="{{url('logout')}}" onclick="return confirm('Are you sure you want to Logout?')"><i class="fa fa-power-off"></i> Logout</a></li>
                             </ul>
                         </li>
