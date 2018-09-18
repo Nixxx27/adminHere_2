@@ -363,6 +363,22 @@ class TrolleysController extends Controller
             ]);
     }
 
+     public function addremarks(Request $request, $history_id)
+    {
+
+       $name = Auth::user()->name;
+       $history = trolley_history::findorfail($history_id);
+       $history ->update([
+            'remarks' =>   strtoupper($name) . " wrote: " ."\r\n" .  $request['remarks'] ."\r\n" ."\r\n" . $history->remarks  , 
+        ]);
+
+
+
+        return back()->with([
+            'flash_message' => "Remarks Succesfully Added!"
+            ]);
+    }
+
 
 
 }

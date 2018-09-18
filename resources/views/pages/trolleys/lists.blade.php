@@ -53,7 +53,10 @@ $myclass = new NewClass();
         </div>
 
 
-    <div class="col-md-12" style="margin-bottom: 10px" ><button class="btn btn-danger btn-sm" title="Add Tracking number Series"  data-toggle="modal" data-target="#responsive-modal"><i class="fas fa-plus-square fa-2x"></i></button>
+    <div class="col-md-12" style="margin-bottom: 10px" >
+       @if(\Auth::user()->is_admin())
+       <button class="btn btn-danger btn-sm" title="Add Tracking number Series"  data-toggle="modal" data-target="#responsive-modal"><i class="fas fa-plus-square fa-2x"></i></button>
+       @endif
 
       <button class="btn btn-success btn-sm" title="Export to Excel"><i class="fas fa-file-excel fa-2x"></i></button>
 
@@ -78,7 +81,7 @@ $myclass = new NewClass();
 
 </div>
 <div class="row">
-   <div class="col-md-11">
+   <div class="col-md-12">
     <div class="table-responsive">
         <table class="table color-bordered-table warning-bordered-table">
                 <thead>
@@ -146,7 +149,7 @@ $myclass = new NewClass();
                                     </button>
                                 {!! Form::close() !!}
                                 </td>
-
+                                @if(\Auth::user()->is_admin())
                                 <td>
                                  {!! Form::open(['method'=>'GET', 'action' => ['TrolleysController@edit', $trolley->id]]) !!}
                                     <button class="btn waves-effect btn-xs waves-light btn-primary" title="Click to Edit Trolley # {{ ucwords($trolley->tracking_number)}}?">
@@ -161,6 +164,7 @@ $myclass = new NewClass();
                                    </button>
                                   {!! Form::close() !!}
                                 </td>
+                              @endif
                              </tr>
                        </table>
                                     </div>
@@ -185,7 +189,7 @@ $myclass = new NewClass();
 @endsection
 
 @section('modal')
-
+ @if(\Auth::user()->is_admin())
 <!--ADD-->
  <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
@@ -238,7 +242,7 @@ $myclass = new NewClass();
     </div>
 </div><!--ADD-->
 
-
+@endif
 @endsection
 
 @section('js')

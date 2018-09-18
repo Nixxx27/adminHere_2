@@ -7,7 +7,7 @@
   <!-- ============================================================== -->
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-themecolor">Change Password</h3>
+            <h3 class="text-themecolor"  style="color:#00318D;font-weight: 600"><i class="fas fa-unlock-alt" style="color:#00c0ef"></i> CHANGE PASSWORD</h3>
         </div>
 
         <div class="col-md-7 align-self-center">

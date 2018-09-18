@@ -18,7 +18,7 @@
 
                         <li><a href="{{url('trolleys')}}"><i class="fas fa-shopping-cart" style="color:#002065"></i><span class="hide-menu"> <b>TROLLEY LISTS</b> </span></a></li>
 
-
+                        @if(\Auth::user()->is_admin())
                             <li class="nav-devider"></li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-cogs" style="color:#002065"></i><span class="hide-menu"> <b>SETTINGS</b></span></a>
                             <ul aria-expanded="false" class="collapse">
@@ -26,6 +26,7 @@
                                 <li><a href="{{url('trackingseries')}}">Tracking No. Series</a></li>
                             </ul>
                         </li>
+                        @endif
                        
                     </ul>
                 </nav>

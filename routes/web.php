@@ -74,7 +74,7 @@ Route::group(['middleware' => ['auth']],
 	| History Extends Trolleys Controller
 	|--------------------------------------------------------------------------
 	*/
-	
+	Route::POST('/trolleys/history/addremarks/{history_id}','TrolleysController@addremarks');
 	Route::POST('/trolleys/history/returntrolley/{history_id}','TrolleysController@returnedTrolley');
 	Route::GET('/trolleys/history/{trolley_id}','TrolleysController@viewHistoryPerTrolley');
 

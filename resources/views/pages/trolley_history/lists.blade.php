@@ -1,5 +1,13 @@
 @extends('layouts.app_template')
+@section('css')
+<style type="text/css">
+  tbody
+  {
+    font-size:12px;
+  }
+</style>
 
+@endsection
 @section('content')
 
  <!-- Bread crumb and right sidebar toggle -->
@@ -39,8 +47,8 @@
 
 
    <div class="col-md-12">
-
-            <table class="table color-bordered-table warning-bordered-table">
+    <div class="table-responsive">
+             <table class="table color-bordered-table warning-bordered-table">
                 <thead>
                     <tr>
                       <th>DATE & TIME</th>
@@ -48,17 +56,19 @@
                       <th>LOCATION</th>
                       <th>FLIGHT NO.</th>
                       <th>STATUS</th>
-                      <th>OTHERS / REMARKS</th>
-                      <th></th>
+                      <th>REMARKS</th>
+                      <th colspan="2"></th>
                     </tr>
                </thead>
                 <tbody>
                     @foreach($histories as $history)
                         <tr>
-                            <td>{{$history->created_at->format('M d Y h:i A D')}}</td>
+                            <td>
+                            {{$history->created_at->format('M d Y h:i A D')}}</td>
                             {{-- <td>{{strtoupper($history->theTrolley->tracking_number)}}</td> --}}
                             <td>{{strtoupper($history->theCurrentLocation->location)}}</td>
                             <td> - </td>
+                            
                             <td>
                               @if($history->status == "forretain")
                                 <i class="fas fa-check-circle fa-2x" style="color:green" title="Found in Right Location "></i>
@@ -71,16 +81,20 @@
                               @endif
                             </td> 
                             
-                            <td>{{$history->remarks}}</td>
+                            <td style="width:250px">@if($history->remarks)
+                              <textarea style="background: #F4F6F9;border: 0px;font-size: 12px;" class="form-control">{{$history->remarks}}</textarea>
+                              @endif
+                             </td>
+                            
                                <td >
                                 @if($history->status == "forreturn" AND $history->is_returned == 0)
 
                                 
-                                 <button class="btn waves-effect btn-sm waves-light btn-info" title="Click if this Trolley is Returned to right Location "  data-toggle="modal" data-target="#responsive-modal">RETURN</button>
+                                 <button class="btn waves-effect btn-sm waves-light btn-success" title="Click if this Trolley is Returned to right Location "  data-toggle="modal" data-target="#responsive-modal{{$history->id}}">RETURN</button>
 
 
                                  <!--MODAL START-->
-                                 <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                 <div id="responsive-modal{{$history->id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                            <div class="modal-header">
@@ -97,7 +111,7 @@
                                                 
                                                <div class="form-group">
                                                     <label for="returned_remarks" class="control-label">Add Remarks:</label>
-                                                        <textarea class="form-control" id="returned_remarks" name="returned_remarks">{{old('remarks')}}</textarea>
+                                                        <textarea class="form-control" id="returned_remarks" name="returned_remarks">{{old('returned_remarks')}}</textarea>
                                                  </div>
                                    
                                         </div>
@@ -119,6 +133,41 @@
                                   @endif
 
                                </td>
+
+                               <td style="padding-right:40px">
+                              <button class="btn waves-effect btn- waves-light btn-info" title="Add Remarks"  data-toggle="modal" data-target="#addRemarks{{$history->id}}"><i class="fas fa-plus-square"></i> </button>
+                         
+                                 <!--MODAL START-->
+                                 <div id="addRemarks{{$history->id}}" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                           <div class="modal-header">
+                                                <h4 class="modal-title"> ADD REMARKS</h4>
+                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                           </div>
+                                        
+                                        <div class="modal-body">
+                                         {{ Form::open(array('url' => 'trolleys/history/addremarks/' . $history->id,'method' => 'POST','name' => 'addremarks','id' => 'addremarks')) }}
+
+                                               <div class="form-group">
+                                         <textarea class="form-control" id="remarks" name="remarks">{{old('remarks')}}</textarea>
+                                                 </div>
+                                   
+                                        </div>
+                                        
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                                            <button type="submit" onclick="return confirm('Confirm Remarks?')" class="btn btn-danger waves-effect waves-light"><i class="fas fa-save"></i> Save</button>
+                                        </div>
+                                         {!! Form::close() !!}
+                                        
+                                        </div><!--modal-content-->
+                                    
+                                    </div>
+                                </div>     <!--MODAL END-->
+
+
+                            </td>
                            {{--   <td align="center">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -150,7 +199,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-
+</div>
 </div>
 @endsection
 
