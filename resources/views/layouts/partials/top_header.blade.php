@@ -44,7 +44,7 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a  style="color:white" class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-message"></i>
-                                <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                                {{-- <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div> --}}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown">
                                 <ul>
@@ -54,7 +54,7 @@
                                     <li>
                                         <div class="message-center">
                                             <!-- Message -->
-                                            <a href="#">
+                                           {{--  <a href="#">
                                                 <div class="btn btn-danger btn-circle"><i class="fas fa-shopping-cart"></i></div>
                                                 <div class="mail-contnet">
                                                     <h5>Trolley #. 1200005</h5> <span class="mail-desc"> Current Loc : MNL</span> <span class="time">Aug 02 2018 10:11 AM Thu</span> </div>
@@ -79,7 +79,7 @@
                                                 <div class="btn btn-danger btn-circle"><i class="fas fa-shopping-cart"></i></div>
                                                 <div class="mail-contnet">
                                                     <h5>Trolley #. 1200005</h5> <span class="mail-desc"> Current Loc : MNL</span> <span class="time">Aug 02 2018 10:11 AM Thu</span> </div>
-                                            </a>
+                                            </a> --}}
                                         </div>
                                     </li>
                                     <li>

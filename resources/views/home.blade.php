@@ -67,9 +67,9 @@
                             <div class="card-header">
                                 <h4 class="m-b-0 text-white"><strong># OF TROLLEYS FOR RETURN</strong> </h4></div>
                             <div class="card-body">
-                                <span style="font-size:50px;color:white;"><strong>4 </strong></span>
+                                {{-- <span style="font-size:50px;color:white;"><strong>4 </strong></span> --}}
                                 <br>
-                                <button class="btn btn-sm btn-inverse">View details</button>
+                                {{-- <button class="btn btn-sm btn-inverse">View details</button> --}}
                             </div>
                         </div>
                     </div>
